@@ -30,9 +30,6 @@ function getHumanChoice() {
     return choice;
 }
 
-const humanScore = 0;
-const computerScore = 0;
-
 
 /* playRound 
 function playRound(humanChoice, computerChoice)
@@ -47,6 +44,7 @@ else
 console.log(winner)
 */
 
+/*
 function playRound(humanChoice, computerChoice) {
     humanChoice.toLowerCase();
     console.log(computerChoice)
@@ -64,15 +62,16 @@ function playRound(humanChoice, computerChoice) {
         console.log("It's a tie!");
     }
 }
+*/    
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
 
 /* playGame
 humanScore
 computerScore
+playRound function
 let n = 0
 while (n < 6) 
 n++
@@ -80,5 +79,42 @@ playRound(getHumanChoice, getComputerchoice)
 */
 
 function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+
+    function playRound(humanChoice, computerChoice) {
+    humanChoice.toLowerCase();
+    console.log(humanChoice);
+    console.log(computerChoice);
+    let winner = humanChoice + " & " + computerChoice;
     
+    if (winner === "rock & paper" || winner === "paper & scissors" || winner === "scissors & rock") { 
+        console.log("You lose! " + computerChoice + " beats " + humanChoice);
+        computerScore++;
+    }        
+    else if (winner === "paper & rock" || winner === "scissors & paper" || winner === "rock & scissors") {
+        console.log("You Win! " + humanChoice + " beats " + computerChoice);
+        humanScore++;  
+    }
+    else {
+        console.log("It's a tie!");
+    }
 }
+    let n = 0;
+    while (n < 5) {
+        n++;
+        playRound(getHumanChoice(), getComputerChoice()); 
+    }
+
+    if (humanScore > computerScore) {
+        console.log("You win the game!");
+    }  
+    else if (humanScore == computerScore) {
+        console.log("There's no winner!");
+    }
+    else {
+        console.log("Computer wins the game!");
+    }
+}
+
+playGame();
